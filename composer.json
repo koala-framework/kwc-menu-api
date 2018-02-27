@@ -1,7 +1,7 @@
 {
     "name": "koala-framework/kwc-native-menu",
     "require": {
-        "koala-framework/koala-framework": "~4.5"
+        "koala-framework/koala-framework": ">=4.5"
     },
     "autoload": {
         "psr-4": { "Kwf\\KwcNativeMenuBundle\\": "" }
