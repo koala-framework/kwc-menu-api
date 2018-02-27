@@ -1,0 +1,8 @@
+services:
+    kwf_kwcnativemenu.components_controller:
+        class:    Kwf\KwcNativeMenuBundle\Controller\ComponentsController
+        autowire: true
+
+    kwf_kwcnativemenu.components:
+        class:    Kwf\KwcNativeMenuBundle\Services\Components
+        autowire: true

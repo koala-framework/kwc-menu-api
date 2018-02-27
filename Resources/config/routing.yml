@@ -1,0 +1,9 @@
+kwf_kwcnativemenu.components:
+    path:       /api/v1/components
+    defaults:
+        _controller: kwf_kwcnativemenu.components_controller:notifyAction
+
+kwf_kwcnativemenu.component:
+    path:       /api/v1/components/{componentId}
+    defaults:
+        _controller: kwf_kwcnativemenu.components_controller:notifyAction
