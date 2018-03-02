@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
-class ComponentsController extends Controller
+class MenuController extends Controller
 {
     protected $_componentsService;
     protected $_tokenStorage;

@@ -1,6 +1,6 @@
 services:
-    kwf_kwcnativemenu.components_controller:
-        class:    Kwf\KwcNativeMenuBundle\Controller\ComponentsController
+    kwf_kwcnativemenu.menu_controller:
+        class:    Kwf\KwcNativeMenuBundle\Controller\MenuController
         autowire: true
 
     kwf_kwcnativemenu.components:

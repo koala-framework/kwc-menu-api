@@ -1,9 +1,9 @@
-kwf_kwcnativemenu.components:
-    path:       /api/v1/components
+kwf_kwcnativemenu.root:
+    path:       /api/v1/native-menu
     defaults:
-        _controller: kwf_kwcnativemenu.components_controller:notifyAction
+        _controller: kwf_kwcnativemenu.menu_controller:getComponentsAction
 
 kwf_kwcnativemenu.component:
-    path:       /api/v1/components/{componentId}
+    path:       /api/v1/native-menu/{componentId}
     defaults:
-        _controller: kwf_kwcnativemenu.components_controller:notifyAction
+        _controller: kwf_kwcnativemenu.menu_controller:getComponentAction
