@@ -18,8 +18,8 @@ class Components
             'type' => $isRoot ? 'root' : 'webview',
             'url' => $page->getAbsoluteUrl()
         );
-        if (method_exists($page->componentClass, 'getJsonVars')) {
-            $ret = array_merge($ret, $page->getComponent()->getJsonVars($userRow));
+        if (method_exists($page->componentClass, 'modifyDataForNativeMenu')) {
+            $ret = array_merge($ret, $page->getComponent()->modifyDataForNativeMenu($userRow));
         }
         return $ret;
     }
