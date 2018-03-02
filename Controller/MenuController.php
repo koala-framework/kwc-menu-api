@@ -24,15 +24,23 @@ class MenuController extends Controller
         $this->_rootComponentId = $rootComponentId;
     }
 
+    private function getUserRow()
+    {
+        $token = $this->_tokenStorage->getToken();
+        $userRow = null;
+        if (!($token instanceof AnonymousToken)) {
+            $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
+        }
+        return $userRow;
+    }
+
     public function getComponentsAction()
     {
-        $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
-        return View::create(array('data'=>$this->_componentService->getDataForComponentId($this->_rootComponentId, $userRow)), 200);
+        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($this->_rootComponentId, $this->getUserRow())), 200);
     }
 
     public function getComponentAction($componentId)
     {
-        $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
-        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($componentId, $userRow)), 200);
+        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($componentId, $this->getUserRow())), 200);
     }
 }
