@@ -18,8 +18,10 @@ class Components
             'type' => $isRoot ? 'root' : 'webview',
             'url' => $page->getAbsoluteUrl()
         );
-        if (method_exists($page->componentClass, 'modifyDataForNativeMenu')) {
-            $ret = array_merge($ret, $page->getComponent()->modifyDataForNativeMenu($userRow));
+        if (\Kwc_Abstract::hasSetting($page->componentClass, 'nativeMenuConfig')) {
+            $nativeMenuConfig = \Kwc_Abstract::getSetting($page->componentClass, 'nativeMenuConfig');
+            $configObject = new $nativeMenuConfig();
+            $configObject->modifyDataForNativeMenu($userRow, $page, $ret);
         }
         return $ret;
     }
