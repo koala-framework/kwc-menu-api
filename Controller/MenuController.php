@@ -4,6 +4,7 @@ namespace Kwf\KwcNativeMenuBundle\Controller;
 use Kwf\KwcNativeMenuBundle\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
+use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class MenuController extends Controller
@@ -17,15 +18,22 @@ class MenuController extends Controller
         $this->_tokenStorage = $tokenStorage;
     }
 
+    private function getUserRow()
+    {
+        $userRow = null;
+        if (!$this->_tokenStorage->getToken() instanceof AnonymousToken) {
+            $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
+        }
+        return $userRow;
+    }
+
     public function getComponentsAction()
     {
-        $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
-        return View::create(array('data'=>$this->_componentService->getDataForComponentId('root-nativeApp', $userRow)), 200);
+        return View::create(array('data'=>$this->_componentsService->getDataForComponentId('root', $this->getUserRow())), 200);
     }
 
     public function getComponentAction($componentId)
     {
-        $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
-        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($componentId, $userRow)), 200);
+        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($componentId, $this->getUserRow())), 200);
     }
 }
