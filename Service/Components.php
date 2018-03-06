@@ -21,7 +21,7 @@ class Components
         if (\Kwc_Abstract::hasSetting($page->componentClass, 'nativeMenuConfig')) {
             $nativeMenuConfig = \Kwc_Abstract::getSetting($page->componentClass, 'nativeMenuConfig');
             $configObject = new $nativeMenuConfig();
-            $configObject->modifyDataForNativeMenu($userRow, $page, $ret);
+            $configObject->modifyDataForNativeMenu($page, $ret, $userRow);
         }
         return $ret;
     }
