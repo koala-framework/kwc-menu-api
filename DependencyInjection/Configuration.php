@@ -1,5 +1,5 @@
 <?php
-namespace Kwf\KwcNativeMenuBundle\DependencyInjection;
+namespace Kwc\MenuApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
@@ -8,7 +8,7 @@ class Configuration implements \Symfony\Component\Config\Definition\Configuratio
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('kwf_kwcnativemenu');
+        $rootNode = $treeBuilder->root('kwc_menuapi');
         $rootNode
             ->children()
                 ->scalarNode('menuStartComponentId')->defaultValue('root')->end()
