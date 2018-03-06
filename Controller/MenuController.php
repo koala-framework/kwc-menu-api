@@ -9,13 +9,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 class MenuController extends Controller
 {
     protected $_componentsService;
-    protected $_tokenStorage;
     protected $_menuStartComponentId;
 
-    public function __construct(\Kwf\KwcNativeMenuBundle\Services\Components $componentsService, TokenStorage $tokenStorage)
+    public function __construct(\Kwf\KwcNativeMenuBundle\Services\Components $componentsService)
     {
         $this->_componentsService = $componentsService;
-        $this->_tokenStorage = $tokenStorage;
     }
 
     public function setMenuStartComponentId($menuStartComponentId)
@@ -23,22 +21,13 @@ class MenuController extends Controller
         $this->_menuStartComponentId = $menuStartComponentId;
     }
 
-    private function getUserRow()
-    {
-        $userRow = null;
-        if (!$this->_tokenStorage->getToken() instanceof AnonymousToken) {
-            $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
-        }
-        return $userRow;
-    }
-
     public function getComponentsAction()
     {
-        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($this->_menuStartComponentId, $this->getUserRow())), 200);
+        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($this->_menuStartComponentId)), 200);
     }
 
     public function getComponentAction($componentId)
     {
-        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($componentId, $this->getUserRow())), 200);
+        return View::create(array('data'=>$this->_componentsService->getDataForComponentId($componentId)), 200);
     }
 }
