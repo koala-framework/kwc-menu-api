@@ -23,6 +23,15 @@ class Components
             $configObject = new $nativeMenuConfig();
             $configObject->modifyDataForNativeMenu($page, $ret, $userRow);
         }
+        $select = new \Kwf_Component_Select();
+        $select->whereFlag('addToNativeMenu', true);
+        foreach ($page->getRecursiveChildComponents($select) as $childComponent) {
+            if (\Kwc_Abstract::hasSetting($childComponent->componentClass, 'nativeMenuConfig')) {
+                $nativeMenuConfig = \Kwc_Abstract::getSetting($childComponent->componentClass, 'nativeMenuConfig');
+                $configObject = new $nativeMenuConfig();
+                $configObject->modifyDataForNativeMenu($childComponent, $ret, $userRow);
+            }
+        }
         return $ret;
     }
 
