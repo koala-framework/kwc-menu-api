@@ -25,8 +25,10 @@ class Components
             'type' => $isRoot ? 'root' : 'webview',
             'url' => $page->getAbsoluteUrl()
         );
-        if (method_exists($page->componentClass, 'getJsonVars')) {
-            $ret = array_merge($ret, $page->getComponent()->getJsonVars($userRow));
+        if (\Kwc_Abstract::hasSetting($page->componentClass, 'nativeMenuConfig')) {
+            $nativeMenuConfig = \Kwc_Abstract::getSetting($page->componentClass, 'nativeMenuConfig');
+            $configObject = new $nativeMenuConfig();
+            $configObject->modifyDataForNativeMenu($page, $ret, $userRow);
         }
         return $ret;
     }
