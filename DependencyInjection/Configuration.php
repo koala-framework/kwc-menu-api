@@ -11,7 +11,7 @@ class Configuration implements \Symfony\Component\Config\Definition\Configuratio
         $rootNode = $treeBuilder->root('kwf_kwcnativemenu');
         $rootNode
             ->children()
-                ->scalarNode('rootComponentId')->defaultValue('root')->end()
+                ->scalarNode('menuStartComponentId')->defaultValue('root')->end()
                 ->integerNode('returnedLevels')->defaultValue(2)->end()
             ->end();
         return $treeBuilder;

@@ -11,7 +11,7 @@ class MenuController extends Controller
 {
     protected $_componentsService;
     protected $_tokenStorage;
-    protected $_rootComponentId;
+    protected $_menuStartComponentId;
 
     public function __construct(\Kwf\KwcNativeMenuBundle\Service\Components $componentsService, TokenStorage $tokenStorage)
     {
@@ -19,15 +19,15 @@ class MenuController extends Controller
         $this->_tokenStorage = $tokenStorage;
     }
 
-    public function setRootComponentId($rootComponentId)
+    public function setMenuStartComponentId($menuStartComponentId)
     {
-        $this->_rootComponentId = $rootComponentId;
+        $this->_menuStartComponentId = $menuStartComponentId;
     }
 
     public function getComponentsAction()
     {
         $userRow = $this->_tokenStorage->getToken()->getUser()->getKwfUser();
-        return View::create(array('data'=>$this->_componentService->getDataForComponentId($this->_rootComponentId, $userRow)), 200);
+        return View::create(array('data'=>$this->_componentService->getDataForComponentId($this->_menuStartComponentId, $userRow)), 200);
     }
 
     public function getComponentAction($componentId)

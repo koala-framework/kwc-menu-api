@@ -22,6 +22,6 @@ class KwfKwcNativeMenuExtension extends Extension
         $def->addMethodCall('setReturnedLevels', array('returnedLevels' => $config['returnedLevels']));
 
         $def = $container->getDefinition('kwf_kwcnativemenu.menu_controller');
-        $def->addMethodCall('setRootComponentId', array('rootComponentId' => $config['rootComponentId']));
+        $def->addMethodCall('setMenuStartComponentId', array('menuStartComponentId' => $config['menuStartComponentId']));
     }
 }
