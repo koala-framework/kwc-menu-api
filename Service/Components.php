@@ -3,10 +3,17 @@ namespace Kwf\KwcNativeMenuBundle\Service;
 
 class Components
 {
+    protected $_returnedLevels;
+
+    public function setReturnedLevels($returnedLevels)
+    {
+        $this->_returnedLevels = $returnedLevels;
+    }
+
     public function getDataForComponentId($componentId, $userRow)
     {
         $component = \Kwf_Component_Data_Root::getInstance()->getComponentById($componentId);
-        return $this->_getPageDataRecursive($component, 2, $userRow);
+        return $this->_getPageDataRecursive($component, $this->_returnedLevels, $userRow);
     }
 
     public function getDataForPage($page, $userRow)

@@ -15,5 +15,13 @@ class KwfKwcNativeMenuExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+        $def = $container->getDefinition('kwf_kwcnativemenu.components');
+        $def->addMethodCall('setReturnedLevels', array('returnedLevels' => $config['returnedLevels']));
+
+        $def = $container->getDefinition('kwf_kwcnativemenu.menu_controller');
+        $def->addMethodCall('setMenuStartComponentId', array('menuStartComponentId' => $config['menuStartComponentId']));
     }
 }
