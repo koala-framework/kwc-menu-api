@@ -1,7 +1,6 @@
 <?php
 namespace Kwf\KwcNativeMenuBundle\Controller;
 
-use Kwf\KwcNativeMenuBundle\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
 use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
@@ -13,7 +12,7 @@ class MenuController extends Controller
     protected $_tokenStorage;
     protected $_menuStartComponentId;
 
-    public function __construct(\Kwf\KwcNativeMenuBundle\Service\Components $componentsService, TokenStorage $tokenStorage)
+    public function __construct(\Kwf\KwcNativeMenuBundle\Services\Components $componentsService, TokenStorage $tokenStorage)
     {
         $this->_componentsService = $componentsService;
         $this->_tokenStorage = $tokenStorage;

@@ -1,5 +1,5 @@
 <?php
-namespace Kwf\KwcNativeMenuBundle\Service;
+namespace Kwf\KwcNativeMenuBundle\Services;
 
 class Components
 {
