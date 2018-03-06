@@ -12,6 +12,7 @@ class Configuration implements \Symfony\Component\Config\Definition\Configuratio
         $rootNode
             ->children()
                 ->scalarNode('rootComponentId')->defaultValue('root')->end()
+                ->integerNode('returnedLevels')->defaultValue(2)->end()
             ->end();
         return $treeBuilder;
     }
