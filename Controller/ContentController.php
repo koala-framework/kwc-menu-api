@@ -22,6 +22,9 @@ class ContentController
         if (!is_string($url)) {
             throw new Kwf_Exception_NotFound();
         }
+        if (substr($url, 0, 1) == '/') {
+            $url = 'http://'.$request->getHttpHost().$url;
+        }
         $page = Kwf_Component_Data_Root::getInstance()->getPageByUrl($url, null);
 
         $data = \Kwf_Component_ApiContent_Helper::getContent($page);
