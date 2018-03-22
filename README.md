@@ -1,5 +1,5 @@
-# NativeMenu
-Repository for implementing controller to provide menu- and component-data for native-app
+# KwcMenuApi
+Repository for implementing controller to provide menu- and component-data over api-controller
 
 ## Installation
 ### Basic code changes
@@ -9,13 +9,13 @@ Repository for implementing controller to provide menu- and component-data for n
         {
             $bundles = array(
                 ...
-                new Kwf\KwcNativeMenuBundle\KwfKwcNativeMenuBundle()
+                new Kwc\MenuApiBundle\KwcMenuApiBundle()
             );
             ...
         }
 
 * Add routing config to `routing.yml`
 
-        kwcnativemenu:
-            resource: "@KwfKwcNativeMenuBundle/Resources/config/routing.yml"
+        kwcmenuapi:
+            resource: "@KwcMenuApiBundle/Resources/config/routing.yml"
             prefix:   /

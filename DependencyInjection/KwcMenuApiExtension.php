@@ -1,12 +1,12 @@
 <?php
-namespace Kwf\KwcNativeMenuBundle\DependencyInjection;
+namespace Kwc\MenuApiBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
-class KwfKwcNativeMenuExtension extends Extension
+class KwcMenuApiExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -18,10 +18,10 @@ class KwfKwcNativeMenuExtension extends Extension
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        $def = $container->getDefinition('kwf_kwcnativemenu.components');
+        $def = $container->getDefinition('kwc_menuapi.components');
         $def->addMethodCall('setReturnedLevels', array('returnedLevels' => $config['returnedLevels']));
 
-        $def = $container->getDefinition('kwf_kwcnativemenu.menu_controller');
+        $def = $container->getDefinition('kwc_menuapi.menu_controller');
         $def->addMethodCall('setMenuStartComponentId', array('menuStartComponentId' => $config['menuStartComponentId']));
     }
 }

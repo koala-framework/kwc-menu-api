@@ -1,5 +1,5 @@
 <?php
-namespace Kwf\KwcNativeMenuBundle\Services;
+namespace Kwc\MenuApiBundle\Services;
 
 class Components
 {
@@ -25,16 +25,16 @@ class Components
             'type' => $isRoot ? 'root' : 'webview',
             'url' => $page->getAbsoluteUrl()
         );
-        if (\Kwc_Abstract::hasSetting($page->componentClass, 'nativeMenuConfig')) {
-            $nativeMenuConfig = \Kwc_Abstract::getSetting($page->componentClass, 'nativeMenuConfig');
-            $configObject = new $nativeMenuConfig();
-            $configObject->modifyDataForNativeMenu($page, $ret);
+        if (\Kwc_Abstract::hasSetting($page->componentClass, 'menuApiConfig')) {
+            $menuApiConfig = \Kwc_Abstract::getSetting($page->componentClass, 'menuApiConfig');
+            $configObject = new $menuApiConfig();
+            $configObject->modifyDataForMenuApi($page, $ret);
         }
         $select = new \Kwf_Component_Select();
-        $select->whereFlag('addToNativeMenu', true);
+        $select->whereFlag('addToMenuApi', true);
         foreach ($page->getRecursiveChildComponents($select) as $childComponent) {
-            if (\Kwc_Abstract::hasSetting($childComponent->componentClass, 'nativeMenuConfig')) {
-                $nativeMenuConfig = \Kwc_Abstract::getSetting($childComponent->componentClass, 'nativeMenuConfig');
+            if (\Kwc_Abstract::hasSetting($childComponent->componentClass, 'menuApiConfig')) {
+                $nativeMenuConfig = \Kwc_Abstract::getSetting($childComponent->componentClass, 'menuApiConfig');
                 $configObject = new $nativeMenuConfig();
                 $configObject->modifyDataForNativeMenu($childComponent, $ret);
             }

@@ -1,5 +1,5 @@
 <?php
-namespace Kwf\KwcNativeMenuBundle\Controller;
+namespace Kwc\MenuApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
@@ -11,7 +11,7 @@ class MenuController extends Controller
     protected $_componentsService;
     protected $_menuStartComponentId;
 
-    public function __construct(\Kwf\KwcNativeMenuBundle\Services\Components $componentsService)
+    public function __construct(\Kwc\MenuApiBundle\Services\Components $componentsService)
     {
         $this->_componentsService = $componentsService;
     }
