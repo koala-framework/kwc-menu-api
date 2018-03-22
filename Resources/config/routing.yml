@@ -7,3 +7,8 @@ kwf_kwcnativemenu.component:
     path:       /api/v1/native-menu/{componentId}
     defaults:
         _controller: kwf_kwcnativemenu.menu_controller:getComponentAction
+
+kwf_kwcnativemenu.page:
+    path:       /api/v1/kwc-content
+    defaults:
+        _controller: kwf_kwcnativemenu.content_controller:dataAction

@@ -6,3 +6,7 @@ services:
     kwf_kwcnativemenu.components:
         class:    Kwf\KwcNativeMenuBundle\Services\Components
         autowire: true
+
+    kwf_kwcnativemenu.content_controller:
+        class:    Kwf\KwcNativeMenuBundle\Controller\ContentController
+        autowire: true
