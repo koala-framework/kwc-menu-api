@@ -5,13 +5,5 @@
     },
     "autoload": {
         "psr-4": { "Kwc\\MenuApiBundle\\": "" }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://packages.vivid-planet.com/"
-        }
-    ]
+    }
 }
