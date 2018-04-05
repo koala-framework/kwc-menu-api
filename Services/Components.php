@@ -36,7 +36,7 @@ class Components
             if (\Kwc_Abstract::hasSetting($childComponent->componentClass, 'menuApiConfig')) {
                 $nativeMenuConfig = \Kwc_Abstract::getSetting($childComponent->componentClass, 'menuApiConfig');
                 $configObject = new $nativeMenuConfig();
-                $configObject->modifyDataForNativeMenu($childComponent, $ret);
+                $configObject->modifyDataForMenuApi($childComponent, $ret);
             }
         }
         return $ret;
