@@ -42,12 +42,19 @@ class Components
         return $ret;
     }
 
+    protected function _getPageSelect()
+    {
+        return array(
+            'showInMenu' => true,
+        );
+    }
+
     protected function _getPageDataRecursive($parentPage, $levels)
     {
         $ret = $this->getDataForPage($parentPage);
         $ret['hasChildren'] = false;
         $ret['children'] = array();
-        foreach ($parentPage->getChildPages(array('showInMenu'=>true)) as $page) {
+        foreach ($parentPage->getChildPages($this->_getPageSelect()) as $page) {
             $ret['hasChildren'] = true;
             if ($levels > 0) {
                 $ret['children'][] = $this->_getPageDataRecursive($page, $levels-1);
